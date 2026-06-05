@@ -6,7 +6,7 @@ using namespace std;
 
 bool isPrime(int n){
 	if (n <= 1) return false;
-	for(int i = 2; i*i <= n; i = i++){
+	for(int i = 2; i*i <= n; i++){
 		if(n % i == 0){
 			return false;
 		}
@@ -84,16 +84,18 @@ int main(int argc, char *argv[]){
 	double end_time = MPI_Wtime();
 
 	//RESULTADOS
-	cout << "--------------------------------------------------------------------------------" << endl;
-	cout << "Analisis completo de 0 a " << n << endl;
-	cout << "Primos encontrados: " << total_primos_encontrados << endl;
-	cout << "Tiempo empleado desde el inicio de la busqueda: " << (end_time - start_time) << " segundos." << endl;
+	if(rankid == 0){
+		cout << "--------------------------------------------------------------------------------" << endl;
+		cout << "Analisis completo de 0 a " << n << endl;
+		cout << "Primos encontrados: " << total_primos_encontrados << endl;
+		cout << "Tiempo empleado desde el inicio de la busqueda: " << (end_time - start_time) << " segundos." << endl;
 
-	cout << "Ultimos primos encontrados: ";
-	for(int i = max(0, total_primos_encontrados -5); i < total_primos_encontrados; i++){
-		cout << primos_globales[i] << " ";
+		cout << "Ultimos primos encontrados: ";
+		for(int i = max(0, total_primos_encontrados -5); i < total_primos_encontrados; i++){
+			cout << primos_globales[i] << " ";
+		}
+		cout << endl << "------------------------------------------------------------------------------" << endl;
 	}
-	cout << endl << "------------------------------------------------------------------------------" << endl;
 	MPI_Finalize();
 	return 0;
 }
