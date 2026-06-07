@@ -36,9 +36,9 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    //semilla para los números aleatorios
-    srand(time(0));
-  
+    
+    int filas_locales = n / size;
+
     vector<int> A; // La matriz sera de 1 dimension para poder compartirla entre los procesos
     vector<int> B(n);
     vector<int> C;
