@@ -92,7 +92,7 @@ int main(int argc, char* argv[]) {
         }
     }
     */
-  
+    if (rank == 0) cout << "PROCESO TERMINADO CON EXITO" << endl;  
     MPI_Finalize();
     return 0;
 }
