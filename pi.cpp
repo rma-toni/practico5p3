@@ -1,12 +1,8 @@
 #include <iostream>
-#include <chrono>
 
 using namespace std;
 
 int main(int argc, char* argv[]){
-    
-    auto inicio = chrono::high_resolution_clock::now();
-    
     if (argc < 2) {
         std::cerr << "Error: Debes ingresar el valor de n." << std::endl;
         std::cerr << "Uso: " << argv[0] << " <numero>" << std::endl;
@@ -27,11 +23,4 @@ int main(int argc, char* argv[]){
     }
 
     cout << "El valor obtenido es " << suma << endl;
-    
-
-    auto fin = chrono::high_resolution_clock::now();
-    chrono::duration<double, milli> tiempo_transcurrido = fin - inicio;
-
-    cout << "Resultados del analisis:" << endl;
-    cout << "El proceso tardo: " << tiempo_transcurrido.count() << " ms" << endl;
 }
